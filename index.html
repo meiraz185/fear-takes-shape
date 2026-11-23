@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#070707">
+  <meta name="description" content="FEAR TAKES SHAPE — an experimental interactive piece about giving physical form to the unknown.">
+  <title>FEAR TAKES SHAPE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main id="stage" aria-label="Interactive canvas"></main>
+
+  <header class="hud" id="hud">
+    <div class="brand mono">FEAR TAKES SHAPE</div>
+    <nav class="stages mono" id="stageNav" aria-label="Stages">
+      <button data-s="1" title="Perception">01</button><span>/</span>
+      <button data-s="2" title="Discovery">02</button><span>/</span>
+      <button data-s="3" title="Distortion">03</button><span>/</span>
+      <button data-s="4" title="Presence">04</button><span>/</span>
+      <button data-s="5" title="Acknowledgment">05</button><span>/</span>
+      <button data-s="6" title="Containment">06</button><span>/</span>
+      <button data-s="7" title="The Decision">07</button><span>/</span>
+      <button data-s="8" title="Confrontation">08</button>
+    </nav>
+    <div class="tools mono">
+      <button id="btnSound" aria-pressed="false">sound</button>
+      <button id="btnMotion" aria-pressed="false">motion</button>
+      <button id="btnRestart">restart</button>
+    </div>
+  </header>
+
+  <div class="stage-title" id="stageTitle" aria-live="polite">
+    <div class="num mono" id="titleNum">01</div>
+    <div class="name" id="titleName">Perception</div>
+  </div>
+  <p class="instruction" id="instruction"></p>
+  <p class="hint mono" id="hint"></p>
+  <button class="next mono" id="btnNext" hidden>continue →</button>
+  <div class="veil" id="veil"></div>
+
+  <section class="overlay intro" id="intro">
+    <div class="intro-inner">
+      <div class="mono dim">an experiment in eight stages</div>
+      <h1>Fear Takes Shape</h1>
+      <p class="lede">Something is here. It has no form yet.<br>Whatever it becomes, you will have decided.</p>
+      <div class="intro-actions mono">
+        <button id="btnResume" hidden>return to your creature</button>
+        <button id="btnBegin">begin</button>
+      </div>
+      <p class="mono dim small">sound recommended · mouse, pen or touch</p>
+    </div>
+  </section>
+
+  <section class="naming" id="naming" aria-label="Name the creature">
+    <p class="line" id="nameLine1">You gave it a shape.</p>
+    <p class="line" id="nameLine2">Now give it a name.</p>
+    <form class="name-row" id="nameForm" autocomplete="off">
+      <input id="nameInput" maxlength="32" spellcheck="false" autocomplete="off" aria-label="Name" placeholder="">
+      <button class="mono" id="nameOk" type="submit">name it</button>
+    </form>
+  </section>
+
+  <section class="decision" id="decision" aria-label="The decision">
+    <p class="question">Are you ready to face your monster?</p>
+    <div class="choices mono">
+      <button id="btnReady"><span class="lbl">I'm ready</span><i class="fill"></i></button>
+      <button id="btnNotYet">Not yet</button>
+    </div>
+    <p class="mono dim small hold-hint" id="holdHint">press and hold</p>
+  </section>
+  <button class="ask mono" id="btnAsk" hidden>are you ready?</button>
+
+  <section class="finale" id="finale" aria-live="polite">
+    <p class="line" id="final1">The monster hasn't changed.</p>
+    <p class="line" id="final2">But the unknown is no longer unknown.</p>
+    <div class="finale-actions mono" id="finaleActions">
+      <button id="btnBack">return to the terrarium</button>
+      <button id="btnAgain">begin again</button>
+    </div>
+  </section>
+
+  <div class="dialog" id="dialog" role="dialog" aria-modal="true" hidden>
+    <div class="dialog-box">
+      <p id="dialogMsg"></p>
+      <div class="mono">
+        <button id="dialogCancel">stay</button>
+        <button id="dialogOk">continue</button>
+      </div>
+    </div>
+  </div>
+  <div class="toast mono" id="toast" role="status"></div>
+
+  <script src="js/lib/p5.min.js"></script>
+  <script src="js/procedural.js"></script>
+  <script src="js/creature.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/interaction.js"></script>
+  <script src="js/behavior.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/persistence.js"></script>
+  <script src="js/terrarium.js"></script>
+  <script src="js/stages.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
